@@ -27,6 +27,8 @@
     <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
     <script type="text/javascript" src="<%= file %>"></script><% }); %>
 
+    <script src="//code.angularjs.org/1.2.26/angular-sanitize.js"></script>
+
     <!-- it's stupid to have to load it here, but this is for the +1 button -->
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
       { "parsetags": "explicit" }
@@ -55,9 +57,9 @@
         <div class="collapse navbar-collapse" collapse="menuCollapsed">
           <ul class="nav navbar-nav">
             <li ui-sref-active="active">
-              <a href ui-sref="home">
+              <a href ui-sref="bcycle">
                 <i class="fa fa-home"></i>
-                Home
+                bCycle
               </a>
             </li>
             <li>
@@ -76,12 +78,6 @@
               <a href ui-sref="map">
                 <i class="fa fa-github-alt"></i>
                 Map
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/ngbp/ngbp/issues">
-                <i class="fa fa-comments"></i>
-                Support
               </a>
             </li>
           </ul>

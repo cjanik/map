@@ -1,20 +1,24 @@
-<form ng-submit="bcycle.init()">
+<form ng-submit="bcycle.init(bcycle.program)">
 	Enter Program number to get info about a specific location
 	<input type="number" id="program" ng-model="bcycle.program">
 	<input type="submit" value="Get Program Info">
-	<br>{{bcycle.program}}
+	<hr>
 </form>
 
-	<div id="programs" ng-show="bcycle.programs" ng-repeat="program in bcycle.programs">
-		<b>PROGRAM #: </b>{{program.ProgramId}}
-        <b>NAME: </b>{{program.Name}}
+<div id="map-canvas" style="height: 400px;"></div>
+
+	<div id="programs" ng-show="bcycle.showPrograms" ng-repeat="program in bcycle.programs">
+		<b>PROGRAM #: </b>{{program.ProgramId}}<br>
+        <b>NAME: </b>{{program.Name}}<br>
         <b>LOCATION: </b> lat: {{program.MapCenter.Latitude}}
         <br>long: {{program.MapCenter.Longitude}}
+        <hr>
 	</div>
 
 	<div id="kiosks" ng-show="bcycle.kiosks" ng-repeat="kiosk in bcycle.kiosks">
-		<b>ADDRESS: </b>{{kiosk.Address.Html}}
-        <b>BIKES AVAILABLE: </b>{{kiosk.BikesAvailable}}
-        <b>LOCATION: </b> lat: {{kiosk.Location.Latitude}}
+		<b>ADDRESS: </b><p ng-bind-html="kiosk.Address.Html"></p>
+        <b>BIKES AVAILABLE: </b>{{kiosk.BikesAvailable}}<br>
+        <b>LOCATION: </b><br>lat: {{kiosk.Location.Latitude}}
         <br>long: {{kiosk.Location.Longitude}}
+        <hr>
 	</div>
