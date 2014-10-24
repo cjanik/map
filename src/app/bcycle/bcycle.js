@@ -75,9 +75,7 @@ angular.module( 'ngBoilerplate.bcycle', [
 
       google.maps.event.addListener(marker, 'click', function(){
         infoWindow.setContent('<h3>' + marker.title + '</h3><div id="click">' + kiosk.Name + '</div>');
-        google.maps.event.addListener(document.getElementById('click'), 'click', function(){
-          that.init();
-        });
+
         infoWindow.open(that.gMap, marker);
       });
 

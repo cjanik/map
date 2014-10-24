@@ -37,9 +37,8 @@ angular.module( 'ngBoilerplate.map', [
               title: info.id.toString()
           });
           
-          console.log('name', info.Name);
           google.maps.event.addListener(marker, 'click', function(){
-            infoWindow.setContent('<h2>' + marker.title + '</h2><div class="infoWindowContent">' + info.Name + '</div>');
+            infoWindow.setContent('<h2>' + marker.title + '</h2><div class="infoWindowContent">' + info.name + '</div>');
             infoWindow.open($scope.gMap, marker);
           });
 

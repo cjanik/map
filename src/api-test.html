@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>api test</title>
+	<style>
+		b{ display: block; margin-top: 10px; }
+		div{ padding: 40px 20px;  font-family: helvetica neue; 
+		color: #444; border-bottom: 1px dashed #bbb;  }
+	</style>
+</head>
+<body>
+	Enter Kiosk number to get info about a specific location
+	<input type="number" id="kiosk" value="">
+	<button type="submit" onclick="app.init()" onsubmit="app.init()">Get Kiosk Info</button>
+<hr>
+<main id='content'>
+</main>
+
+<script>
+	
+var app = {	
+	xhr: new XMLHttpRequest(),	
+	parseKiosk: function(e){
+		if(app.xhr.readyState === 4 && app.xhr.status === 200) {
+			var res = JSON.parse(app.xhr.responseText),
+				content = document.getElementById('content');
+				while(content.lastChild) content.removeChild(content.lastChild);
+				
+			console.log(res);
+			for(var i=0;i<res.length; i++){
+				var d = document.createElement('div'),
+				html = '<b>ADDRESS: </b>'+ res[i].Address.Html;
+				html+= '<b>BIKES AVAILABLE: </b>' + res[i].BikesAvailable;
+				html+= '<b>LOCATION: </b> lat: ' + res[i].Location.Latitude;
+				html+= '<br>long: ' + res[i].Location.Longitude;
+				d.innerHTML = html;
+				document.getElementById('content').appendChild(d);
+			}
+		}
+	},
+	parsePrograms: function(e){
+		if(app.xhr.readyState === 4 && app.xhr.status === 200) {
+			var res = JSON.parse(app.xhr.responseText),
+				content = document.getElementById('content');
+				while(content.lastChild) content.removeChild(content.lastChild);
+
+			console.log(res);
+			for(var i=0; i < res.length; i++){
+				var d = document.createElement('div'),
+				html = '<b>KIOSK #: </b>' + res[i].ProgramId;
+				html+= '<b>NAME: </b>' + res[i].Name;
+				html+= '<b>LOCATION: </b> lat: ' + res[i].MapCenter.Latitude;
+				html+= '<br>long: ' + res[i].MapCenter.Longitude;
+				d.innerHTML = html;
+				document.getElementById('content').appendChild(d);
+
+			}
+		}
+	},	
+	init: function(){
+		var kiosk = document.getElementById('kiosk').value;
+		console.log('kiosk: ',kiosk);
+		app.xhr.onload = (kiosk === "") ? app.parsePrograms : app.parseKiosk;
+		app.xhr.open('get', './api-proxy.php?kiosk=' + kiosk, true);
+		app.xhr.send();
+	}
+};
+
+app.init();
+
+</script>
+	
+
+		
+</body>
+</html>
