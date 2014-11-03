@@ -4,6 +4,7 @@ angular.module( 'ngBoilerplate', [
   'ngBoilerplate.home',
   'ngBoilerplate.about',
   'ngBoilerplate.map',
+  'ngBoilerplate.agm',
   'ngBoilerplate.bcycle',
   'ui.router'
 ])

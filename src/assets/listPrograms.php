@@ -2,11 +2,8 @@
 header('content-type: application/json; charset=utf-8');
 header("access-control-allow-origin: *");
 
-if(isset($_GET['kiosk'])  && $_GET['kiosk'] != ""){
-	$url = 'https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/' . $_GET['kiosk'];
-} else {
-	$url = 'https://publicapi.bcycle.com/api/1.0/ListPrograms';
-}
+
+$url = 'https://publicapi.bcycle.com/api/1.0/ListPrograms';
 
 $ch = curl_init($url);
 

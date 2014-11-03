@@ -1,3 +1,8 @@
 /build
 /karma
 /node_modules
+/vendor/angular-google-maps/example/
+/vendor/angular-google-maps/lib/
+/vendor/angular-google-maps/spec/
+/vendor/angular-google-maps/src/
+/vendor/bluebird/src/

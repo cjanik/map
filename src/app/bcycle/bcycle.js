@@ -130,7 +130,7 @@ angular.module( 'ngBoilerplate.bcycle', [
 
   that.init = function(programId, position){
     console.log('program: ',programId);
-    $http.get('assets/api-proxy.php', {params: {'kiosk': programId}})
+    $http.get('assets/listPrograms.php', {params: {'kiosk': programId}})
     .success( function(data, status){
       console.log(data);
       if(programId !== ''){

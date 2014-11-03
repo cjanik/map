@@ -63,6 +63,9 @@ module.exports = {
   vendor_files: {
     js: [
       'vendor/angular/angular.js',
+      'vendor/lodash/dist/lodash.min.js',
+      'vendor/bluebird/js/browser/bluebird.js',
+      'vendor/angular-google-maps/dist/angular-google-maps.min.js',
       'vendor/angular-sanitize/angular-sanitize.js',
       'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
       'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
