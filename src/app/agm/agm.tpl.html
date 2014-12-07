@@ -3,6 +3,7 @@
 	Click to return to map of all bCycle programs
 	<button ng-click="agm.loadNationalMarkers(true)">Reload</button>
 </div>
+
 <ui-gmap-google-map center="map.center" zoom="map.zoom" control="map.control"
 	events="map.events" draggable="true">
 
@@ -12,7 +13,7 @@
 
 		<ui-gmap-window show="marker.show">
 
-			<button ng-click="$parent.marker.loadProgramKiosks()">{{marker.title}}</button>
+			<button ng-click="$parent.marker.clickFunction()">{{marker.title}}</button>
 
         </ui-gmap-window>
 

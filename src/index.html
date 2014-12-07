@@ -16,55 +16,7 @@
 
   </head>
   <body>
-    <div class="container">
-      <div class="navbar navbar-default">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" ng-init="menuCollapsed = true"
-            ng-click="menuCollapsed = ! menuCollapsed">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <div class="navbar-brand">
-            ngbp
-            <small>
-              <a href="http://github.com/ngbp/ngbp/blob/v<%= version %>-release/CHANGELOG.md">
-                v<%= version %>
-              </a>
-            </small>
-          </div>
-        </div>
-        <div class="collapse navbar-collapse" collapse="menuCollapsed">
-          <ul class="nav navbar-nav">
-            <li ui-sref-active="active">
-              <a href ui-sref="bcycle">
-                <i class="fa fa-home"></i>
-                bCycle
-              </a>
-            </li>
-            <li>
-              <a href="https://developers.google.com/maps/documentation/javascript/tutorial?hl=FR#MapOptions">
-                <i class="fa fa-book"></i>
-                G Maps API
-              </a>
-            </li>
-            <li ui-sref-active="active">
-              <a href ui-sref="agm">
-                <i class="fa fa-github-alt"></i>
-                AGM
-              </a>
-            </li>
-            <li ui-sref-active="active">
-              <a href ui-sref="map">
-                <i class="fa fa-github-alt"></i>
-                Map
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+
 
     <div class="container" ui-view="main"></div>
 

@@ -50,11 +50,12 @@ angular.module( 'ngBoilerplate.agm', [
             longitude: program.MapCenter.Longitude,
             id: program.ProgramId,
             title: program.Name,
+            template: 'markerTemplate.html',
             show: false,
             onClick: function(){
               this.show = !this.show;
             },
-            loadProgramKiosks: function(){
+            clickFunction: function(){
               console.log('this.id',this.id);
               that.listProgramKiosks(this.id, {latitude: this.latitude, longitude: this.longitude});
             }
