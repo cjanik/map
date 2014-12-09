@@ -1,8 +1,31 @@
+<div class="sidebar">
 
-<div ng-hide="agm.showPrograms">
-	Click to return to map of all bCycle programs
-	<button ng-click="agm.loadNationalMarkers(true)">Reload</button>
+<header>
+	<h1>bCycle map UI</h1>
+</header>
+
+<div ng-hide="agm.loading">
+	<div ng-hide="agm.showPrograms">
+		Click to return to map of all bCycle programs
+		<button ng-click="agm.init(); refreshMap(); agm.loading=true;">Reload</button>
+	</div>
+
+	<div id="programs" ng-show="agm.cityProgram">
+		<b>PROGRAM #: </b>{{agm.cityProgram.ProgramId}}<br>
+	    <b>NAME: </b>{{agm.cityProgram.Name}}
+	    <hr>
+	</div>
+
+	<div id="kiosks" ng-hide="agm.showPrograms" ng-repeat="program in agm.kiosks">
+		<b>ADDRESS: </b><p ng-bind-html="program.Address.Html"></p>
+	    <b>BIKES AVAILABLE: </b>{{program.BikesAvailable}}
+	    <hr>
+	</div>
 </div>
+
+</div>
+
+<div ng-show="agm.loading" ng-class="{agm.loading: loader}">Loading...</div>
 
 <ui-gmap-google-map center="map.center" zoom="map.zoom" control="map.control"
 	events="map.events" draggable="true">
@@ -11,28 +34,12 @@
 		coords="{latitude: marker.latitude, longitude: marker.longitude}" idkey="marker.id"
 		click="marker.onClick">
 
-		<ui-gmap-window show="marker.show">
+		<ui-gmap-window>
 
-			<button ng-click="$parent.marker.clickFunction()">{{marker.title}}</button>
+			<button ng-click="$parent.marker.getDetail()">{{marker.title}}</button>
 
         </ui-gmap-window>
 
 	</ui-gmap-marker>
 
 </ui-gmap-google-map>
-
-<div id="programs" ng-show="agm.showPrograms" ng-repeat="program in agm.programListData">
-	<b>PROGRAM #: </b>{{program.ProgramId}}<br>
-    <b>NAME: </b>{{program.Name}}<br>
-    <b>LOCATION: </b> lat: {{program.MapCenter.Latitude}}
-    <br>long: {{program.MapCenter.Longitude}}
-    <hr>
-</div>
-
-<div id="kiosks" ng-hide="agm.showPrograms" ng-repeat="program in agm.programKiosks">
-	<b>ADDRESS: </b><p ng-bind-html="program.Address.Html"></p>
-    <b>BIKES AVAILABLE: </b>{{program.BikesAvailable}}<br>
-    <b>LOCATION: </b><br>lat: {{program.Location.Latitude}}
-    <br>long: {{program.Location.Longitude}}
-    <hr>
-</div>
